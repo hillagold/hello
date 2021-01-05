@@ -16,9 +16,6 @@ node {
    stage("push artifact"){
        echo "push artifact"
    }
-   stage("running SonarQube/somthing else .. to test quality & vularabilitys"){
-       echo "Sonarqube"
-   }
    stage("integration tests"){
        echo "running integrations tests"
    }
