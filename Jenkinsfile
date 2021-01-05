@@ -10,6 +10,7 @@ node {
         echo "makefile"
    }
    stage("packaging artifacts"){
+       sh "pwd && ls"
        sh "conan package ."
        echo "packaing with canon"
    }
