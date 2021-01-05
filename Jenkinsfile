@@ -29,6 +29,8 @@ node {
        echo "running integrations tests"
    }
 
+}
+
    def runCommand( command )
    {
        if(isUnix())
@@ -40,5 +42,3 @@ node {
            bat command
        }
    }
-}
-
