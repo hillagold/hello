@@ -13,7 +13,7 @@ node {
        echo "unit-tsting"
    }
    stage("packaging artifacts"){
-       sh "conan package conanfile.py"
+       sh "conan package ."
        echo "packaing with canon"
    }
    stage("push artifact"){
