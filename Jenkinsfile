@@ -6,9 +6,9 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-        cmake{}
+        sh '/opt/cmake/bin/cmake .. -DCMAKE_BUILD_TYPE=Release'
         //sh "sudo apt install cmake"
-        sh "cmake CMakeLists.txt && make"
+        //sh "cmake CMakeLists.txt && make"
         echo "makefile"
    }
    stage("unit-testing"){
