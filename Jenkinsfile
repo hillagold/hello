@@ -9,9 +9,6 @@ node {
         sh "cmake CMakeLists.txt && make"
         echo "makefile"
    }
-   stage("unit-testing"){
-       echo "unit-tsting"
-   }
    stage("packaging artifacts"){
        sh "conan package ."
        echo "packaing with canon"
