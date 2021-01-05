@@ -13,6 +13,7 @@ node {
        echo "unit-tsting"
    }
    stage("packaging artifacts"){
+       sh "conan packag ."
        echo "packaing with canon"
    }
    stage("push artifact"){
@@ -26,15 +27,3 @@ node {
    }
 
 }
-
-   def runCommand( command )
-   {
-       if(isUnix())
-       {
-           sh command
-       }
-       else
-       {
-           bat command
-       }
-   }
