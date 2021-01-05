@@ -21,16 +21,6 @@ class HelloConan(ConanFile):
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()''')
 
-    # def build(self):
-    #     cmake = CMake(self)
-    #     cmake.configure(source_folder="hello")
-    #     cmake.build()
-
-        # Explicit way:
-        # self.run('cmake %s/hello %s'
-        #          % (self.source_folder, cmake.command_line))
-        # self.run("cmake --build . %s" % cmake.build_config)
-
     def package(self):
         self.copy("*.h", dst="include", src="hello")
         self.copy("*hello.lib", dst="lib", keep_path=False)
