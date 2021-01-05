@@ -6,11 +6,7 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-        //sh "sudo apt install cmake"
-        //sh "cmake CMakeLists.txt && make"
-        runCommand( 'cmake -E remove_directory _build')                             // make sure the build is clean
-        runCommand( 'cmake -H. -B_build ' + params.AdditionalGenerateArguments )
-        runCommand( 'cmake --build _build ' + params.AdditionalBuildArguments )
+        sh "cmake CMakeLists.txt && make"
         echo "makefile"
    }
    stage("unit-testing"){
