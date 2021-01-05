@@ -6,7 +6,7 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-        sh '/opt/cmake/bin/cmake .. -DCMAKE_BUILD_TYPE=Release'
+        sh 'var/jenkins_home/bin/cmake .. -DCMAKE_BUILD_TYPE=Release'
         //sh "sudo apt install cmake"
         //sh "cmake CMakeLists.txt && make"
         echo "makefile"
