@@ -6,6 +6,7 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
+        cmake{}
         //sh "sudo apt install cmake"
         sh "cmake CMakeLists.txt && make"
         echo "makefile"
