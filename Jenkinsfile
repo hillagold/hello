@@ -28,5 +28,17 @@ node {
    stage("integration tests"){
        echo "running integrations tests"
    }
+
+   def runCommand( command )
+   {
+       if(isUnix())
+       {
+           sh command
+       }
+       else
+       {
+           bat command
+       }
+   }
 }
 
