@@ -11,11 +11,11 @@ node {
    }
    stage("packaging artifacts"){
        sh "pwd && ls"
+       echo "packaing with canon"
        sh "conan create ."
        sh "conan remote remove_ref hello/0.1@"
        sh "conan install hello/0.1@"
-       sh "conan package . "
-       echo "packaing with canon"
+#       sh "conan package . "
    }
    stage("push artifact"){
        echo "push artifact"
