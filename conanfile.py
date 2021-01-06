@@ -17,7 +17,7 @@ class HelloConan(ConanFile):
         # in MSVC if the packaged project doesn't have variables to set it
         # properly
         tools.replace_in_file("hello/CMakeLists.txt", "PROJECT(MyHello)",
-                              '''PROJECT(MyHello)
+                              '''PROJECT(HelloWorld)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()''')
 
