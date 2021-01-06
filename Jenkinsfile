@@ -1,4 +1,4 @@
-def repo_url = 'https://github.com/conan-io/hello'
+def repo_url = 'https://github.com/hillagold/hello.git'
 def repo_branch = 'master'
 
 node {
