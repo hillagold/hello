@@ -12,7 +12,7 @@ node {
    stage("packaging artifacts"){
        sh "pwd && ls"
        sh "conan remote remove_ref hello/1.0"
-       sh "conan install hello/1.0@"
+       sh "conan install hello/1.0"
        sh "conan package ."
        echo "packaing with canon"
    }
