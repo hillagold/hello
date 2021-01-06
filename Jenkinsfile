@@ -11,7 +11,7 @@ node {
    }
    stage("packaging artifacts"){
        sh "pwd && ls"
-       sh "conan install"
+       sh "conan install -g"
        sh "conan package ."
        echo "packaing with canon"
    }
