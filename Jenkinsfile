@@ -9,16 +9,7 @@ node {
         sh "cmake CMakeLists.txt && make"
         echo "makefile"
    }
-#   stage("packaging artifacts"){
-#       sh "pwd && ls"
-#       echo "packaing with canon"
-#       sh "whereis conan"
-#       sh "conan create ."
-#       sh "conan install hello/0.1@"
-#   }
-#   stage("push artifact"){
-#       echo "push artifact"
-#   }
+
    stage("integration tests"){
        echo "running integrations tests"
    }
