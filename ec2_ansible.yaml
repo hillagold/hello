@@ -1,0 +1,7 @@
+---
+- name: test
+  hosts: loclhost
+
+  tasks:
+     - name: testhos
+       command: "ls -l"
