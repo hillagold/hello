@@ -1,11 +1,11 @@
 ---
 - name: ec2 launcher
   hosts: localhost
+  connection: local
 
   tasks:
     - name: launching ec2
       ec2:
-
         instance_type: t2.micro
         key_name: hillagold
         image: ami-00bb6f60
@@ -15,4 +15,4 @@
         vpc_subnet_id: subnet-bd8434e0
         wait: yes
         assign_public_ip: yes
-               
+        
