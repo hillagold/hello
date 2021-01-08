@@ -6,7 +6,7 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-        sh "cmake CMakeLists.txt && make"
+        sh "cmake CMakeLists.txt"
         echo "makefile"
    }
    stage("packaging artifacts"){
