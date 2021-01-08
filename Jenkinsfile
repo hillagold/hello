@@ -13,6 +13,7 @@ node {
        sh "pwd && ls"
        echo "packaing with canon"
        sh "whereis conan"
+       sh "$ source ~/.profile"
        sh "conan create ."
        sh "conan install hello/0.1@"
    }
