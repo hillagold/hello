@@ -13,8 +13,8 @@ node {
        sh "pwd && ls"
        echo "packaing with canon"
        sh "whereis conan"
-       sh "sudo conan create ."
-       sh "sudo conan install hello/0.1@"
+       sh "conan create ."
+       sh "conan install hello/0.1@"
    }
    stage("push artifact"){
        echo "push artifact"
