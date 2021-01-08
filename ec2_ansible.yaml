@@ -16,7 +16,7 @@
         wait: yes
         assign_public_ip: yes
     - debug:
-         msg: System {{ inventory_hostname }} has gateway {{ ansible_default_ipv4.gateway }}
+         msg: ansible_default_ipv4.gateway {{ ansible_default_ipv4.gateway }}
          when: ansible_default_ipv4.gateway is defined
 
     - name: Terminate instances that were previously launched
