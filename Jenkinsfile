@@ -9,12 +9,12 @@ node {
         echo "makefile"
         sh "cmake CMakeLists.txt"
    }
-   stage("ppackaging artifacts"){
+   stage("Packaging artifacts"){
        echo "packaing with canon"
        sh "conan new Hello/0.1 -t"
        sh "conan create . cyber/beta"
    }
-   stage("push artifact"){
+   stage("Push artifact"){
        echo "Upload to Conan-repo bintray"
        sh "conan upload Hello/0.1@cyber/beta -r=conan-repo --all"
    }
