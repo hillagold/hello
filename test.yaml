@@ -3,12 +3,12 @@
   hosts: localhost
   connection: local
   vars:
-      instance_type: t2.micro
-      security_group: hilla_AWS_Security_Grp
-      image: ami-00bb6f60
-      keypair: hillagold
-      region: us-west-2
-      count: 1
+    instance_type: t2.micro
+    security_group: hilla_AWS_Security_Grp
+    image: ami-00bb6f60
+    keypair: hillagold
+    region: us-west-2
+    count: 1
 
   tasks:
     - name: Setting up Security/Firewall Group
