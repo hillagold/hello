@@ -16,6 +16,8 @@ node {
    }
    stage("push artifact"){
        echo "Upload to Conan-repo bintray"
+       sh "conan remote add conan-repo https://api.bintray.com/conan/hillagold/conan-repo"
+       sh "conan user -p 3f3432aa5e1948249fe3b0a1857c6ff19af4e036 -r conan-repo hillagold"
        sh "conan upload hello/0.1@cyber/beta -r=conan-repo --all"
    }
    stage("integration tests"){
