@@ -11,20 +11,6 @@
       count: 1
 
   tasks:
-    - name: Setting up Security/Firewall Group
-      ec2_group:
-         name: '{{ security_group }}'
-         description: Rules Allowing Traffic on port 22
-         region: '{{ region }}'
-         rules:
-          - proto: tcp
-            from_port: 22
-            to_port: 22
-            cidr_iip: 0.0.0.0/0
-         rules_egress:
-           - porto: all
-             cidr_ip: 0.0.0.0/0
-
     - name: launching ec2
       ec2:
         instance_type: '{{ instance_type }}'
@@ -35,7 +21,7 @@
         vpc_subnet_id: subnet-bd8434e0
         wait: yes
         assign_public_ip: yes
-        group: '{{ security_group }}'
+        group: default
       register: ec2_out
     - debug:
          msg: ansible_default_ipv4.gateway {{ ansible_default_ipv4.gateway }}
