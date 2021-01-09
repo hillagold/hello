@@ -13,7 +13,8 @@ node {
        sh "pwd && ls"
        echo "packaing with canon"
        sh "whereis conan"
-       sh "conan create ."
+       sh "conan new Hello/0.1 -t"
+       sh "conan create . cyber/beta"
    }
    stage("push artifact"){
        echo "push artifact"
