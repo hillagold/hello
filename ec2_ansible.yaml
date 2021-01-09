@@ -14,10 +14,12 @@
     - name: launching ec2
       ec2:
         instance_type: '{{ instance_type }}'
+        aws_secret_key: SECRET
+        aws_access_key: ACCESS
         key_name: '{{ keypair }}'
         image: '{{ image }}'
         region: '{{ region }}'
-        count: '{{ count }'
+        count: '{{ count }}'
         vpc_subnet_id: subnet-bd8434e0
         wait: yes
         assign_public_ip: yes
