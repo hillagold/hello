@@ -16,7 +16,7 @@ node {
    }
    stage("push artifact"){
        echo "Upload to Conan-repo bintray"
-       sh "conan upload hello/0.1 -r=conan-repo --all"
+       sh "conan upload hello/0.1@cyber/beta -r=conan-repo --all"
    }
    stage("integration tests"){
        echo "running integrations tests"
