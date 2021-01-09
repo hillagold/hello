@@ -31,12 +31,11 @@
         key_name: '{{ keypair }}'
         image: '{{ image }}'
         region: '{{ region }}'
-        group: deafult
         count: '{{ count }'
         vpc_subnet_id: subnet-bd8434e0
         wait: yes
         assign_public_ip: yes
-        group: hilla_AWS_Security_Grp
+        group: '{{ security_group }}'
       register: ec2_out
     - debug:
          msg: ansible_default_ipv4.gateway {{ ansible_default_ipv4.gateway }}
