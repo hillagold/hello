@@ -6,18 +6,17 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-        sh "cmake CMakeLists.txt"
         echo "makefile"
+        sh "cmake CMakeLists.txt"
    }
-   stage("packaging artifacts"){
-       sh "pwd && ls"
+   stage("ppackaging artifacts"){
        echo "packaing with canon"
-       sh "whereis conan"
        sh "conan new Hello/0.1 -t"
        sh "conan create . cyber/beta"
    }
    stage("push artifact"){
-       echo "push artifact"
+       echo "Upload to Conan-repo bintray"
+       sh "conan upload hello/0.1 -r=conan-repo --all"
    }
    stage("integration tests"){
        echo "running integrations tests"

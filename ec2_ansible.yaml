@@ -12,25 +12,26 @@
 
   tasks:
     - name: Setting up Security/Firewall Group
+      become: yes
       ec2_group:
-         name: '{{ security_group }}'
-         description: Rules Allowing Traffic on port 22
-         region: '{{ region }}'
-         rules:
-        - proto: tcp
-          from_port: 22
-          to_port: 22
-          cidr_iip: 0.0.0.0/0
-         rules_egress:
-         - porto: all
-           cidr_ip: 0.0.0.0/0
+        name: '{{ security_group }}'
+        aws_secret_key: SECRET
+        aws_access_key: ACCESS
+        description: Rules Allowing Traffic on port 22
+        region: '{{ region }}'
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_iip: 0.0.0.0/0
+        rules_egress:
+          - porto: all
+            cidr_ip: 0.0.0.0/0
 
     - name: launching ec2
       become: yes
       ec2:
         instance_type: '{{ instance_type }}'
-        aws_secret_key: SECRET
-        aws_access_key: ACCESS
         key_name: '{{ keypair }}'
         image: '{{ image }}'
         region: '{{ region }}'
@@ -38,7 +39,7 @@
         vpc_subnet_id: subnet-bd8434e0
         wait: yes
         assign_public_ip: yes
-        group: default
+        group: '{{ security_group }}'
       register: ec2_out
     - debug:
          msg: ansible_default_ipv4.gateway {{ ansible_default_ipv4.gateway }}
@@ -49,3 +50,8 @@
       become: yes
       wait_for: host={{ item.public_dns_name }} pot=22 delay=60 timeout=320 state=started
       with_items: '{{ ec2_out.instances }}'
+
+    - name: Terminate instances that were previously launched
+      amazon.aws.ec2:
+        state: 'absent'
+        instance_ids: '{{ ec2.instance_ids }}'
