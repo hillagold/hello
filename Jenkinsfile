@@ -14,6 +14,11 @@ node {
        sh "conan new Hello/0.1 -t"
        sh "conan create . cyber/beta"
    }
+   stage("push artifact"){
+       echo "Upload to Conan-repo bintray"
+       sh "conan user -p 3f3432aa5e1948249fe3b0a1857c6ff19af4e036 -r conan-repo hillagold"
+       sh "conan upload Hello/0.1@cyber/beta -r=conan-repo --all"
+   }
    stage("Push artifact"){
        echo "Upload to Conan-repo bintray"
        sh "conan upload Hello/0.1@cyber/beta -r=conan-repo --all"
