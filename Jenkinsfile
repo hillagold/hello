@@ -14,7 +14,6 @@ node {
        echo "packaing with canon"
        sh "whereis conan"
        sh "conan create ."
-       sh "conan install hello/0.1@"
    }
    stage("push artifact"){
        echo "push artifact"
