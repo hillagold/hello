@@ -17,8 +17,8 @@
       ec2:
         instance_type: '{{ instance_type }}'
         key_name: '{{ keypair }}'
-        aws_secret_key: 'bulRdEPCh3ZlJTFLqRH2HJ1QwuDhKnFV6wIeESiQ'
-        aws_access_key: 'AKIAIPSZTOA5DAFP5AZA'
+        aws_secret_key: '{{ aws_secret_access_key }}'
+        aws_access_key: '{{ aws_access_key_id }}'
         image: '{{ image }}'
         region: '{{ region }}'
         count: '{{ count }}'
