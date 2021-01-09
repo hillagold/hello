@@ -12,15 +12,15 @@
 
   tasks:
 - name: Setting up Security/Firewall Group
-  amazon.aws.ec2_group:
-    name: '{{ security_group }}'
-    description: Rules Allowing Traffic on port 22
-    region: '{{ region }}'
-    rules:
-    - proto: tcp
-      from_port: 22
-      to_port: 22
+    amazon.aws.ec2_group:
+      name: '{{ security_group }}'
+      description: Rules Allowing Traffic on port 22
+      region: '{{ region }}'
+      rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+    rules_egress:
+    - porto: all
       cidr_ip: 0.0.0.0/0
-  rules_egress:
-  - porto: all
-    cidr_ip: 0.0.0.0/0
