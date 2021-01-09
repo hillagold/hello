@@ -1,3 +1,4 @@
+@Library('shared-library') _
 def repo_url = 'https://github.com/hillagold/hello.git'
 def repo_branch = 'master'
 
