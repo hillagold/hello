@@ -1,0 +1,26 @@
+---
+- name: ec2 launcher
+  hosts: localhost
+  connection: local
+  vars:
+      instance_type: t2.micro
+      security_group: hilla_AWS_Security_Grp
+      image: ami-00bb6f60
+      keypair: hillagold
+      region: us-west-2
+      count: 1
+
+  tasks:
+    - name: Setting up Security/Firewall Group
+      amazon.aws.ec2_group:
+        name: '{{ security_group }}'
+        description: Rules Allowing Traffic on port 22
+        region: '{{ region }}'
+        rules:
+         - proto: tcp
+           from_port: 22
+           to_port: 22
+           cidr_iip: 0.0.0.0/0
+        rules_egress:
+         - porto: all
+           cidr_ip: 0.0.0.0/0 
