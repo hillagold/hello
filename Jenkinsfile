@@ -1,7 +1,6 @@
 @Library('shared-library') _
 def repo_url = 'https://github.com/hillagold/hello.git'
 def repo_branch = 'master'
-def package = 'Hello/0.1@cyber/beta'
 def pack = 'Hello/0.1'
 def company = 'cyber/beta'
 
