@@ -4,7 +4,7 @@ def repo_branch = 'master'
 def pack = 'Hello/0.1'
 def company = 'cyber/beta'
 def repo = 'conan-repo'
-def repo_typr = 'bintary'
+def repo_type = 'bintary'
 
 node {
    stage("Get project"){
