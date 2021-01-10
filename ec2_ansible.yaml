@@ -28,6 +28,33 @@
         group: default
       register: ec2_out
 
+    - name: make sure pip is present
+      command: pip --version
+      register: cn
+      ignore_errors: yes
+
+    - name: pip non present, install
+      package:
+        name: python-pip
+      become: yes
+      when: cn["failed"]
+
+    - name: upgrade pip
+      command: pip install --upgrade pip
+      become: yes
+
+    - name: install conan
+      pip:
+        name: conan
+        state: latest
+      become: yes
+
+    - name: add repositories
+      command: "conan remote add {{ item.name }} {{ item.uri }} "
+      with_items:
+        - { name: "conan-repo", uri: "https://api.bintray.com/conan/hillagold/conan-repo"}
+      ignore_errors: yes
+
     - name: curl
       shell: curl -L "https://dl.bintray.com/hillagold/conan-repo/Hello/0.1@cyber/beta" -o hello
 
