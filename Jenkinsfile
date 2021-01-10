@@ -15,7 +15,6 @@ node {
         sh "cmake CMakeLists.txt"
    }
    stage("Packaging artifacts & Upload to bintray repo"){
-       echo "Packaing with canon & Uploading to bintray repo"
        artifact(pack, company, repo, repo_type)
    }
    stage("Ansible"){
