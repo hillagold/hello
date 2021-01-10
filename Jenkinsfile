@@ -8,16 +8,17 @@ def repo_type = 'bintary'
 
 node {
    stage("Get project"){
-      git branch: repo_branch, url: repo_url
+       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-       cmake()
+       echo "makefile"
+       sh "cmake CMakeLists.txt"
    }
    stage("Packaging artifacts & Upload to bintray repo"){
        artifact(pack, company, repo, repo_type)
    }
    stage("Ansible"){
-      sh "ansible-playbook ec2_ansible.yaml"
-      echo "ansible test"
+       sh "ansible-playbook ec2_ansible.yaml"
+       echo "ansible test"
    }
 }
