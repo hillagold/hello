@@ -11,8 +11,7 @@ node {
       git branch: repo_branch, url: repo_url
    }
    stage("Build"){
-        echo "makefile"
-        sh "cmake CMakeLists.txt"
+       cmake()
    }
    stage("Packaging artifacts & Upload to bintray repo"){
        artifact(pack, company, repo, repo_type)
