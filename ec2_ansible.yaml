@@ -10,6 +10,8 @@
       region: us-west-2
       count: 1
       vpc_subnet_id: subnet-bd8434e0
+      conan_package: Hello/0.1@cyber/beta
+      conan_name: conan-repo
 
   tasks:
     - name: launching ec2
@@ -52,11 +54,20 @@
     - name: add repositories
       command: "conan remote add {{ item.name }} {{ item.uri }} "
       with_items:
-        - { name: "conan-repo", uri: "https://api.bintray.com/conan/hillagold/conan-repo"}
+        - { name: "{{ conan_name }}", uri: "https://api.bintray.com/conan/hillagold/conan-repo" }
       ignore_errors: yes
 
-    - name: curl
-      shell: curl -L "https://dl.bintray.com/hillagold/conan-repo/Hello/0.1@cyber/beta" -o hello
+    - name: Create a directory if it does not exist
+      file:
+        path: build
+        state: directory
+        mode: '0755'
+
+    - name: partition new disk
+      shell: /bin/echo -e "n\np\n1\n\n\nw" | sudo fdisk /dev/mapper/ubuntu--vg-root
+
+    - name: download Hello package
+      command: "conan install .. {{ conan_package }} -r {{ conan_name }} > hello"
 
     - name: terminate
       ec2:
