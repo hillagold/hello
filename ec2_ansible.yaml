@@ -4,12 +4,12 @@
   connection: local
   gather_facts: False  
   vars:
-      instance_type: t2.micro
-      security_group: hilla_AWS_Security_Grp
-      image: ami-775e4f16
+      instance_type: c1.medium
+      image: ami-1336d57a
       keypair: hillagold
       region: us-west-2
       count: 1
+      vpc_subnet_id: subnet-bd8434e0
 
   tasks:
     - name: launching ec2
@@ -17,12 +17,12 @@
       ec2:
         instance_type: '{{ instance_type }}'
         key_name: '{{ keypair }}'
-        aws_secret_key: '{{ aws_secret_access_key }}'
-        aws_access_key: '{{ aws_access_key_id }}'
+        aws_access_key: "ec2_access_key"
+        aws_secret_key: "ec2_secret_key"
         image: '{{ image }}'
         region: '{{ region }}'
         count: '{{ count }}'
-        vpc_subnet_id: subnet-bd8434e0
+        vpc_subnet_id: '{{vpc_subnet_id }}'
         wait: yes
         assign_public_ip: yes
         group: default
