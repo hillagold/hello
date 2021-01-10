@@ -4,6 +4,7 @@ def repo_branch = 'master'
 def pack = 'Hello/0.1'
 def company = 'cyber/beta'
 def repo = 'conan-repo'
+def repo_typr = 'bintary'
 
 node {
    stage("Get project"){
@@ -15,7 +16,7 @@ node {
    }
    stage("Packaging artifacts & Upload to bintray repo"){
        echo "Packaing with canon & Uploading to bintray repo"
-       artifact(pack, company, repo)
+       artifact(pack, company, repo, repo_type)
    }
    stage("Ansible"){
       sh "ansible-playbook ec2_ansible.yaml"
