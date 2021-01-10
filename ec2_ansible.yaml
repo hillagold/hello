@@ -4,8 +4,8 @@
   connection: local
   gather_facts: False  
   vars:
-      instance_type: c1.medium
-      image: ami-1336d57a
+      instance_type: t2.micro
+      image: ami-898dd9b9
       keypair: hillagold
       region: us-west-2
       count: 1
@@ -17,8 +17,8 @@
       ec2:
         instance_type: '{{ instance_type }}'
         key_name: '{{ keypair }}'
-        aws_access_key: "AKIA52PY7VUJWXAUGY7A"
-        aws_secret_key: "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"
+        aws_access_key: "AWS_SECRET_ACCESS_KEY"
+        aws_secret_key: "AWS_SECRET_KEY"
         image: '{{ image }}'
         region: '{{ region }}'
         count: '{{ count }}'

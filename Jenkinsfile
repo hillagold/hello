@@ -23,7 +23,7 @@ node {
        echo "running integrations tests"
    }
    stage("Ansible"){
-      sh "ansible-playbook ec2_ansible.yaml"
+      sh "ansible-playbook ec2_ansible.yaml --ask-become-pass"
       echo "ansible test"
    }
 }
